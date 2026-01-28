@@ -5,17 +5,15 @@
   <title>Портфолио | Студент</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" href="assets/favicon.ico">
   <link rel="stylesheet" href="css/style.css">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header>
-  <nav class="navbar">
+<header class="header">
+  <nav class="nav">
     <a href="#home">Главная</a>
     <a href="#skills">Навыки</a>
     <a href="#education">Образование</a>
@@ -27,61 +25,60 @@
 
 <main>
 
-<section id="home" class="hero reveal">
-  <img src="assets/avatar.png" alt="Аватар" class="avatar">
-  <h1>Привет, я <span>Студент-разработчик</span></h1>
-  <h2 class="typing"></h2>
-  <p>
-    Начинающий разработчик, изучающий современные технологии.
-    Интересуюсь веб-разработкой и программированием.
-  </p>
-  <a href="#contacts" class="btn">Связаться со мной</a>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-container">
+    <img src="assets/avatar.png" alt="Аватар" class="avatar">
+
+    <div class="hero-text">
+      <h1>Привет, я <span>студент-разработчик</span></h1>
+      <h2 class="typing"></h2>
+      <p>
+        Начинающий разработчик, изучающий современные технологии.
+        Интересуюсь веб-разработкой и программированием.
+      </p>
+      <a href="#contacts" class="btn">Связаться со мной</a>
+    </div>
+  </div>
 </section>
 
-<section id="skills" class="reveal">
+<!-- SKILLS -->
+<section id="skills" class="section">
   <h2>Навыки</h2>
-
-  <h3>Hard Skills</h3>
 
   <div class="skill">
     <span>Python</span>
-    <div class="progress"><div style="width:70%"></div></div>
+    <div class="bar"><div style="width:70%"></div></div>
   </div>
 
   <div class="skill">
     <span>Java</span>
-    <div class="progress"><div style="width:60%"></div></div>
+    <div class="bar"><div style="width:60%"></div></div>
   </div>
 
   <div class="skill">
     <span>C++</span>
-    <div class="progress"><div style="width:40%"></div></div>
+    <div class="bar"><div style="width:40%"></div></div>
   </div>
 
   <div class="skill">
     <span>JavaScript</span>
-    <div class="progress"><div style="width:10%"></div></div>
+    <div class="bar"><div style="width:30%"></div></div>
   </div>
-
-  <h3>Soft Skills</h3>
-  <ul>
-    <li>Командная работа</li>
-    <li>Коммуникабельность</li>
-    <li>Критическое мышление</li>
-  </ul>
 </section>
 
-<section id="education" class="reveal">
+<!-- EDUCATION -->
+<section id="education" class="section">
   <h2>Образование</h2>
 
   <div class="timeline">
-    <div class="timeline-item">
+    <div class="item">
       <h3>Университет XYZ</h3>
       <span>2022 — настоящее время</span>
       <p>Бакалавр, Информационные системы</p>
     </div>
 
-    <div class="timeline-item">
+    <div class="item">
       <h3>Колледж ABC</h3>
       <span>2019 — 2022</span>
       <p>Программное обеспечение</p>
@@ -89,87 +86,58 @@
   </div>
 </section>
 
-<section id="achievements" class="reveal">
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="section">
   <h2>Достижения</h2>
 
-  <div class="cards">
-    <div class="card">
-      <h3>Хакатон</h3>
-      <p>Участие в хакатоне 2024</p>
-    </div>
-
-    <div class="card">
-      <h3>Сертификат</h3>
-      <p>Coursera: Python</p>
-    </div>
-
-    <div class="card">
-      <h3>Олимпиада</h3>
-      <p>Призёр олимпиады</p>
-    </div>
+  <div class="grid">
+    <div class="card">Участие в хакатоне (2024)</div>
+    <div class="card">Сертификат Coursera</div>
+    <div class="card">Призёр олимпиады</div>
   </div>
 </section>
 
-<section id="projects" class="reveal">
+<!-- PROJECTS -->
+<section id="projects" class="section">
   <h2>Проекты</h2>
 
-  <div class="cards">
-    <div class="project-card">
+  <div class="grid">
+    <div class="card">
       <h3>Todo App</h3>
-      <p>Приложение для задач</p>
-      <p><strong>HTML, CSS, JS</strong></p>
-      <a href="#">GitHub</a>
+      <p>HTML, CSS, JS</p>
     </div>
 
-    <div class="project-card">
+    <div class="card">
       <h3>Weather App</h3>
-      <p>Прогноз погоды</p>
-      <p><strong>JavaScript</strong></p>
-      <a href="#">GitHub</a>
+      <p>JavaScript API</p>
     </div>
 
-    <div class="project-card">
+    <div class="card">
       <h3>QT App</h3>
-      <p>Desktop-приложение</p>
-      <p><strong>C++, QT</strong></p>
-      <a href="#">GitHub</a>
+      <p>C++, QT</p>
     </div>
   </div>
 </section>
 
-<section id="contacts" class="reveal">
+<!-- CONTACTS -->
+<section id="contacts" class="section">
   <h2>Контакты</h2>
 
-  <div class="contact-box">
-    <form id="contactForm">
+  <form id="contactForm" class="form">
+    <input type="text" placeholder="Имя" required>
+    <input type="email" placeholder="Email" required>
+    <textarea placeholder="Сообщение" required></textarea>
+    <button class="btn">Отправить</button>
+    <p id="formMessage"></p>
+  </form>
 
-      <div class="input-group">
-        <input type="text" required>
-        <label>Имя</label>
-      </div>
-
-      <div class="input-group">
-        <input type="email" required>
-        <label>Email</label>
-      </div>
-
-      <div class="input-group">
-        <textarea rows="4" required></textarea>
-        <label>Сообщение</label>
-      </div>
-
-      <button class="btn">Отправить</button>
-      <p id="formMessage"></p>
-    </form>
-  </div>
-
-  <p>Email: student@example.com</p>
-  <p>Город: Алматы</p>
+  <p class="contact-info">Email: student@example.com</p>
+  <p class="contact-info">Город: Алматы</p>
 </section>
 
 </main>
 
-<footer>
+<footer class="footer">
   © 2025 Студент-разработчик
 </footer>
 
