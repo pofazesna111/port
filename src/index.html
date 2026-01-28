@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Портфолио | Студент</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" href="assets/favicon.ico" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,37 +16,29 @@
 
 <header>
   <nav class="navbar">
-    <ul>
-      <li><a href="#home" class="nav-link active">Главная</a></li>
-      <li><a href="#skills" class="nav-link">Навыки</a></li>
-      <li><a href="#education" class="nav-link">Образование</a></li>
-      <li><a href="#achievements" class="nav-link">Достижения</a></li>
-      <li><a href="#projects" class="nav-link">Проекты</a></li>
-      <li><a href="#contacts" class="nav-link">Контакты</a></li>
-    </ul>
+    <a href="#home">Главная</a>
+    <a href="#skills">Навыки</a>
+    <a href="#education">Образование</a>
+    <a href="#achievements">Достижения</a>
+    <a href="#projects">Проекты</a>
+    <a href="#contacts">Контакты</a>
   </nav>
 </header>
 
 <main>
 
-<!-- HOME -->
-<section id="home" class="hero">
-  <div class="hero-content">
-    <img src="assets/avatar.png" alt="Аватар" class="avatar">
-    <h1>Привет, я <span>Студент-разработчик</span></h1>
-    <h2 class="typing"></h2>
-
-    <p>
-      Я начинающий разработчик, изучающий современные технологии программирования.
-      Интересуюсь созданием веб- и desktop-приложений.
-    </p>
-
-    <a href="#contacts" class="btn">Связаться со мной</a>
-  </div>
+<section id="home" class="hero reveal">
+  <img src="assets/avatar.png" alt="Аватар" class="avatar">
+  <h1>Привет, я <span>Студент-разработчик</span></h1>
+  <h2 class="typing"></h2>
+  <p>
+    Начинающий разработчик, изучающий современные технологии.
+    Интересуюсь веб-разработкой и программированием.
+  </p>
+  <a href="#contacts" class="btn">Связаться со мной</a>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
+<section id="skills" class="reveal">
   <h2>Навыки</h2>
 
   <h3>Hard Skills</h3>
@@ -72,118 +64,113 @@
   </div>
 
   <h3>Soft Skills</h3>
-  <ul class="soft-skills">
-    <li>Командная работа</li>
-    <li>Критическое мышление</li>
-    <li>Коммуникабельность</li>
-  </ul>
-
-  <h3>Languages</h3>
   <ul>
-    <li>Английский — B1</li>
-    <li>Казахский — C1</li>
-    <li>Русский — C2</li>
+    <li>Командная работа</li>
+    <li>Коммуникабельность</li>
+    <li>Критическое мышление</li>
   </ul>
 </section>
 
-<!-- EDUCATION -->
-<section id="education">
+<section id="education" class="reveal">
   <h2>Образование</h2>
 
   <div class="timeline">
-    <article>
+    <div class="timeline-item">
       <h3>Университет XYZ</h3>
       <span>2022 — настоящее время</span>
       <p>Бакалавр, Информационные системы</p>
-    </article>
+    </div>
 
-    <article>
+    <div class="timeline-item">
       <h3>Колледж ABC</h3>
       <span>2019 — 2022</span>
       <p>Программное обеспечение</p>
-    </article>
+    </div>
   </div>
 </section>
 
-<!-- ACHIEVEMENTS -->
-<section id="achievements">
+<section id="achievements" class="reveal">
   <h2>Достижения</h2>
 
   <div class="cards">
     <div class="card">
       <h3>Хакатон</h3>
-      <span>2024</span>
-      <p>Участие в студенческом хакатоне</p>
+      <p>Участие в хакатоне 2024</p>
     </div>
 
     <div class="card">
-      <h3>Сертификат Coursera</h3>
-      <span>2023</span>
-      <p>Python for Everybody</p>
+      <h3>Сертификат</h3>
+      <p>Coursera: Python</p>
     </div>
 
     <div class="card">
       <h3>Олимпиада</h3>
-      <span>2022</span>
-      <p>Призёр олимпиады по программированию</p>
+      <p>Призёр олимпиады</p>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
+<section id="projects" class="reveal">
   <h2>Проекты</h2>
 
   <div class="cards">
     <div class="project-card">
       <h3>Todo App</h3>
-      <p>Веб-приложение для управления задачами.</p>
-      <p><strong>Технологии:</strong> HTML, CSS, JS</p>
-      <a href="#" target="_blank">GitHub</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Weather App</h3>
-      <p>Получение погоды по API.</p>
-      <p><strong>Технологии:</strong> JavaScript</p>
+      <p>Приложение для задач</p>
+      <p><strong>HTML, CSS, JS</strong></p>
       <a href="#">GitHub</a>
     </div>
 
     <div class="project-card">
-      <h3>Desktop App</h3>
-      <p>QT-приложение.</p>
-      <p><strong>Технологии:</strong> C++, QT</p>
+      <h3>Weather App</h3>
+      <p>Прогноз погоды</p>
+      <p><strong>JavaScript</strong></p>
+      <a href="#">GitHub</a>
+    </div>
+
+    <div class="project-card">
+      <h3>QT App</h3>
+      <p>Desktop-приложение</p>
+      <p><strong>C++, QT</strong></p>
       <a href="#">GitHub</a>
     </div>
   </div>
 </section>
 
-<!-- CONTACTS -->
-<section id="contacts">
+<section id="contacts" class="reveal">
   <h2>Контакты</h2>
 
-  <form id="contactForm">
-    <input type="text" placeholder="Имя" required>
-    <input type="email" placeholder="Email" required>
-    <textarea placeholder="Сообщение" required></textarea>
-    <button type="submit">Отправить</button>
-    <p id="formMessage"></p>
-  </form>
+  <div class="contact-box">
+    <form id="contactForm">
+
+      <div class="input-group">
+        <input type="text" required>
+        <label>Имя</label>
+      </div>
+
+      <div class="input-group">
+        <input type="email" required>
+        <label>Email</label>
+      </div>
+
+      <div class="input-group">
+        <textarea rows="4" required></textarea>
+        <label>Сообщение</label>
+      </div>
+
+      <button class="btn">Отправить</button>
+      <p id="formMessage"></p>
+    </form>
+  </div>
 
   <p>Email: student@example.com</p>
   <p>Город: Алматы</p>
-
-  <div class="socials">
-    <a href="#">GitHub</a>
-    <a href="#">Telegram</a>
-    <a href="#">HackerRank</a>
-  </div>
 </section>
 
 </main>
 
 <footer>
-  <p>© 2025 Студент-разработчик</p>
+  © 2025 Студент-разработчик
 </footer>
 
 <script src="js/script.js"></script>
