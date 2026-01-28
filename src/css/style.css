@@ -17,6 +17,8 @@ body {
   color: var(--text);
 }
 
+/* ================= HEADER / NAVBAR ================= */
+
 header {
   position: fixed;
   width: 100%;
@@ -31,10 +33,39 @@ header {
   gap: 20px;
 }
 
+/* ОБЯЗАТЕЛЬНО display:inline-block — иначе ::after не видно */
 .navbar a {
+  display: inline-block;
+  position: relative;
   color: var(--text);
   text-decoration: none;
+  padding: 5px 0;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
+
+/* линия под пунктом */
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+/* hover */
+.navbar a:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* ================= SECTIONS ================= */
 
 section {
   padding: 120px 10%;
@@ -52,6 +83,8 @@ section {
   margin-bottom: 20px;
 }
 
+/* ================= BUTTON ================= */
+
 .btn {
   display: inline-block;
   margin-top: 20px;
@@ -60,12 +93,14 @@ section {
   color: #000;
   border-radius: 6px;
   text-decoration: none;
-  transition: 0.3s;
+  transition: transform 0.3s ease;
 }
 
 .btn:hover {
   transform: scale(1.05);
 }
+
+/* ================= SKILLS ================= */
 
 .skill {
   margin-bottom: 15px;
@@ -82,23 +117,29 @@ section {
   background: var(--primary);
 }
 
+/* ================= CARDS ================= */
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
   gap: 20px;
 }
 
-.card, .project-card {
+.card,
+.project-card {
   background: var(--card);
   padding: 20px;
   border-radius: 12px;
-  transition: 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover, .project-card:hover {
+.card:hover,
+.project-card:hover {
   box-shadow: 0 0 25px rgba(56,189,248,0.4);
   transform: translateY(-5px);
 }
+
+/* ================= CONTACTS ================= */
 
 .contact-box {
   max-width: 500px;
@@ -143,48 +184,9 @@ section {
   color: var(--primary);
 }
 
+/* ================= FOOTER ================= */
+
 footer {
   text-align: center;
   padding: 20px;
 }
-/* ============================= */
-/* NAVIGATION HOVER ANIMATION */
-/* ============================= */
-
-.navbar a {
-  position: relative;
-  padding: 5px 0;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-/* линия под пунктом меню */
-.navbar a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0%;
-  height: 2px;
-  background: var(--primary);
-  transition: width 0.3s ease;
-}
-
-/* hover */
-.navbar a:hover {
-  color: var(--primary);
-  transform: translateY(-2px);
-}
-
-.navbar a:hover::after {
-  width: 100%;
-}
-
-/* активный пункт (если добавишь через JS) */
-.navbar a.active {
-  color: var(--primary);
-}
-
-.navbar a.active::after {
-  width: 100%;
-}
-
