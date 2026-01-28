@@ -147,3 +147,45 @@ footer {
   text-align: center;
   padding: 20px;
 }
+
+/* ============================= */
+/* NAVIGATION HOVER ANIMATION */
+/* ============================= */
+
+.navbar a {
+  position: relative;
+  padding: 5px 0;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* линия под пунктом меню */
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+/* hover */
+.navbar a:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* активный пункт (если добавишь через JS) */
+.navbar a.active {
+  color: var(--primary);
+}
+
+.navbar a.active::after {
+  width: 100%;
+}
+
