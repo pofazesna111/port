@@ -1,8 +1,8 @@
 :root {
-  --bg: #0f172a;
+  --bg: #020617;
+  --card: #0f172a;
   --primary: #38bdf8;
   --text: #e5e7eb;
-  --card: #1e293b;
 }
 
 * {
@@ -15,43 +15,35 @@
 body {
   background: var(--bg);
   color: var(--text);
-  scroll-behavior: smooth;
 }
 
 header {
   position: fixed;
   width: 100%;
-  background: rgba(15,23,42,0.95);
+  background: rgba(2,6,23,0.9);
+  padding: 15px;
   z-index: 1000;
 }
 
-.navbar ul {
+.navbar {
   display: flex;
   justify-content: center;
-  list-style: none;
-  padding: 15px;
+  gap: 20px;
 }
 
-.nav-link {
+.navbar a {
   color: var(--text);
-  margin: 0 15px;
   text-decoration: none;
 }
 
-.nav-link.active {
-  color: var(--primary);
-}
-
 section {
-  padding: 100px 10%;
+  padding: 120px 10%;
 }
 
 .hero {
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
+  background: radial-gradient(circle at top, #1e3a8a, #020617);
 }
 
 .avatar {
@@ -63,24 +55,31 @@ section {
 .btn {
   display: inline-block;
   margin-top: 20px;
-  padding: 10px 20px;
+  padding: 10px 25px;
   background: var(--primary);
   color: #000;
+  border-radius: 6px;
   text-decoration: none;
-  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.skill {
+  margin-bottom: 15px;
 }
 
 .progress {
-  background: #334155;
-  height: 10px;
-  border-radius: 5px;
-  margin: 5px 0 15px;
+  background: #1e293b;
+  height: 8px;
+  border-radius: 4px;
 }
 
 .progress div {
   height: 100%;
   background: var(--primary);
-  border-radius: 5px;
 }
 
 .cards {
@@ -92,12 +91,56 @@ section {
 .card, .project-card {
   background: var(--card);
   padding: 20px;
-  border-radius: 10px;
-  transition: transform .3s;
+  border-radius: 12px;
+  transition: 0.3s;
 }
 
 .card:hover, .project-card:hover {
+  box-shadow: 0 0 25px rgba(56,189,248,0.4);
   transform: translateY(-5px);
+}
+
+.contact-box {
+  max-width: 500px;
+  margin: auto;
+  background: var(--card);
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid #334155;
+  color: var(--text);
+  border-radius: 6px;
+}
+
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  transition: 0.3s;
+  background: var(--card);
+  padding: 0 5px;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label,
+.input-group textarea:focus + label,
+.input-group textarea:valid + label {
+  top: -8px;
+  font-size: 12px;
+  color: var(--primary);
 }
 
 footer {
