@@ -1,10 +1,191 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Моя первая страница</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Портфолио | Студент</title>
+
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    Привет, хахакакашка
+
+<header>
+  <nav class="navbar">
+    <ul>
+      <li><a href="#home" class="nav-link active">Главная</a></li>
+      <li><a href="#skills" class="nav-link">Навыки</a></li>
+      <li><a href="#education" class="nav-link">Образование</a></li>
+      <li><a href="#achievements" class="nav-link">Достижения</a></li>
+      <li><a href="#projects" class="nav-link">Проекты</a></li>
+      <li><a href="#contacts" class="nav-link">Контакты</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <img src="assets/avatar.png" alt="Аватар" class="avatar">
+    <h1>Привет, я <span>Студент-разработчик</span></h1>
+    <h2 class="typing"></h2>
+
+    <p>
+      Я начинающий разработчик, изучающий современные технологии программирования.
+      Интересуюсь созданием веб- и desktop-приложений.
+    </p>
+
+    <a href="#contacts" class="btn">Связаться со мной</a>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2>Навыки</h2>
+
+  <h3>Hard Skills</h3>
+
+  <div class="skill">
+    <span>Python</span>
+    <div class="progress"><div style="width:70%"></div></div>
+  </div>
+
+  <div class="skill">
+    <span>Java</span>
+    <div class="progress"><div style="width:60%"></div></div>
+  </div>
+
+  <div class="skill">
+    <span>C++</span>
+    <div class="progress"><div style="width:40%"></div></div>
+  </div>
+
+  <div class="skill">
+    <span>JavaScript</span>
+    <div class="progress"><div style="width:10%"></div></div>
+  </div>
+
+  <h3>Soft Skills</h3>
+  <ul class="soft-skills">
+    <li>Командная работа</li>
+    <li>Критическое мышление</li>
+    <li>Коммуникабельность</li>
+  </ul>
+
+  <h3>Languages</h3>
+  <ul>
+    <li>Английский — B1</li>
+    <li>Казахский — C1</li>
+    <li>Русский — C2</li>
+  </ul>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <h2>Образование</h2>
+
+  <div class="timeline">
+    <article>
+      <h3>Университет XYZ</h3>
+      <span>2022 — настоящее время</span>
+      <p>Бакалавр, Информационные системы</p>
+    </article>
+
+    <article>
+      <h3>Колледж ABC</h3>
+      <span>2019 — 2022</span>
+      <p>Программное обеспечение</p>
+    </article>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <h2>Достижения</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Хакатон</h3>
+      <span>2024</span>
+      <p>Участие в студенческом хакатоне</p>
+    </div>
+
+    <div class="card">
+      <h3>Сертификат Coursera</h3>
+      <span>2023</span>
+      <p>Python for Everybody</p>
+    </div>
+
+    <div class="card">
+      <h3>Олимпиада</h3>
+      <span>2022</span>
+      <p>Призёр олимпиады по программированию</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Проекты</h2>
+
+  <div class="cards">
+    <div class="project-card">
+      <h3>Todo App</h3>
+      <p>Веб-приложение для управления задачами.</p>
+      <p><strong>Технологии:</strong> HTML, CSS, JS</p>
+      <a href="#" target="_blank">GitHub</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Weather App</h3>
+      <p>Получение погоды по API.</p>
+      <p><strong>Технологии:</strong> JavaScript</p>
+      <a href="#">GitHub</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Desktop App</h3>
+      <p>QT-приложение.</p>
+      <p><strong>Технологии:</strong> C++, QT</p>
+      <a href="#">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts">
+  <h2>Контакты</h2>
+
+  <form id="contactForm">
+    <input type="text" placeholder="Имя" required>
+    <input type="email" placeholder="Email" required>
+    <textarea placeholder="Сообщение" required></textarea>
+    <button type="submit">Отправить</button>
+    <p id="formMessage"></p>
+  </form>
+
+  <p>Email: student@example.com</p>
+  <p>Город: Алматы</p>
+
+  <div class="socials">
+    <a href="#">GitHub</a>
+    <a href="#">Telegram</a>
+    <a href="#">HackerRank</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2025 Студент-разработчик</p>
+</footer>
+
+<script src="js/script.js"></script>
 </body>
 </html>
