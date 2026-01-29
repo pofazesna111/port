@@ -27,14 +27,23 @@ type();
 // reveal on scroll
 const reveals = document.querySelectorAll(".reveal");
 
-window.addEventListener("scroll", () => {
-  reveals.forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-      el.style.opacity = 1;
-      el.style.transform = "translateY(0)";
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = 1;
+      entry.target.style.transform = "translateY(0)";
+
+      entry.target.querySelectorAll(".progress div").forEach(bar => {
+        bar.style.width = bar.getAttribute("style").replace("width:", "");
+      });
+
+      observer.unobserve(entry.target);
     }
   });
-});
+}, { threshold: 0.15 });
+
+reveals.forEach(el => observer.observe(el));
+
 
 // form
 document.getElementById("contactForm").addEventListener("submit", e => {
