@@ -28,7 +28,7 @@
 <main>
 
 <section id="home" class="hero reveal">
-  <img src="assets/avatar.png" alt="Аватар" class="avatar">
+  <img src="assets/avatar.png" class="avatar" alt="Аватар">
   <h1>Привет, я <span>Жартаев Алихан</span></h1>
   <h2 class="typing"></h2>
   <p>
@@ -45,46 +45,29 @@
 
   <div class="skill">
     <span>Python</span>
-    <div class="progress"><div style="width:33%"></div></div>
+    <div class="progress">
+      <div data-progress="33%"></div>
+    </div>
   </div>
 
   <div class="skill">
     <span>Java</span>
-    <div class="progress"><div style="width:33%"></div></div>
+    <div class="progress">
+      <div data-progress="33%"></div>
+    </div>
   </div>
 
   <div class="skill">
     <span>C++</span>
-    <div class="progress"><div style="width:1%"></div></div>
+    <div class="progress">
+      <div data-progress="10%"></div>
+    </div>
   </div>
 
   <div class="skill">
     <span>JavaScript</span>
-    <div class="progress"><div style="width:33%"></div></div>
-  </div>
-
-  <h3>Soft Skills</h3>
-  <ul>
-    <li>Командная работа</li>
-    <li>Коммуникабельность</li>
-    <li>Критическое мышление</li>
-  </ul>
-</section>
-
-<section id="education" class="reveal">
-  <h2>Образование</h2>
-
-  <div class="timeline">
-    <div class="timeline-item">
-      <h3>Университет: TOU</h3>
-      <span>2023 — настоящее время</span>
-      <p>Бакалавр, Compuer Science</p>
-    </div>
-
-    <div class="timeline-item">
-      <h3>Школа им. М. Ауезова</h3>
-      <span>2012 — 2023</span>
-      <p>Программное обеспечение</p>
+    <div class="progress">
+      <div data-progress="33%"></div>
     </div>
   </div>
 </section>
@@ -94,18 +77,24 @@
 
   <div class="cards">
     <div class="card">
-      <h3>3 Место на LAN</h3>
-      <p>Участие на местном LAN турнире по CS2</p>
+      <div class="card-inner">
+        <h3>3 место на LAN</h3>
+        <p>Местный LAN-турнир по CS2</p>
+      </div>
     </div>
 
     <div class="card">
-      <h3>Сертификат</h3>
-      <p>Coursera: Excel, Huawei</p>
+      <div class="card-inner">
+        <h3>Сертификат</h3>
+        <p>Coursera / Huawei</p>
+      </div>
     </div>
 
     <div class="card">
-      <h3>Гран при</h3>
-      <p>Гран при на осеннем балу</p>
+      <div class="card-inner">
+        <h3>Гран-при</h3>
+        <p>Осенний бал</p>
+      </div>
     </div>
   </div>
 </section>
@@ -115,24 +104,19 @@
 
   <div class="cards">
     <div class="project-card">
-      <h3>Советую послушать</h3>
-      <p>Не говорите за подшар, у меня саундклауд 17 года</p>
-      <p><strong>40000 Извинений</strong></p>
-      <a href="https://www.youtube.com/watch?v=mji65-HiaUg&list=RDmji65-HiaUg&start_radio=1">Youtube</a>
+      <div class="card-inner">
+        <h3>Советую послушать</h3>
+        <p>SoundCloudKazakhstanBeMad</p>
+        <a href="https://www.youtube.com/watch?v=mji65-HiaUg" target="_blank">YouTube</a>
+      </div>
     </div>
 
     <div class="project-card">
-      <h3>Highest ELO: 2495</h3>
-      <p>Мой смурф аккаунт по ссылке</p>
-      <p><strong>Вечные две тыщи из-за InputLag</strong></p>
-      <a href="https://faceittracker.net/players/donk666">FACEIT TRACKER</a>
-    </div>
-
-    <div class="project-card">
-      <h3></h3>
-      <p>Мое портфолио</p>
-      <p><strong>C++, QT</strong></p>
-      <a href="#">GitHub</a>
+      <div class="card-inner">
+        <h3>FACEIT</h3>
+        <p>Highest ELO: 2495</p>
+        <a href="https://faceittracker.net/players/donk666" target="_blank">Faceit Tracker</a>
+      </div>
     </div>
   </div>
 </section>
@@ -142,7 +126,6 @@
 
   <div class="contact-box">
     <form id="contactForm">
-
       <div class="input-group">
         <input type="text" required>
         <label>Имя</label>
@@ -162,16 +145,11 @@
       <p id="formMessage"></p>
     </form>
   </div>
-
-  <p>Email: percgod@gmail.com</p>
-  <p>Город: PVL</p>
 </section>
 
 </main>
 
-<footer>
-  © 2025 Крутой пацан-студент
-</footer>
+<footer>© 2025 Студент</footer>
 
 <script src="js/script.js"></script>
 </body>
