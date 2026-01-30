@@ -1,15 +1,3 @@
-html { scroll-behavior: smooth; }
-
-:root {
-  --bg: #020617;
-  --card: rgba(15,23,42,.6);
-  --border: rgba(148,163,184,.15);
-  --primary: #7dd3fc;
-  --accent: #38bdf8;
-  --text: #e5e7eb;
-  --muted: #94a3b8;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -18,30 +6,30 @@ html { scroll-behavior: smooth; }
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
+  background: #020617;
+  color: #e5e7eb;
 }
 
 /* ===== NAVBAR ===== */
 header {
-  backdrop-filter: blur(12px);
-  background: rgba(2,6,23,.75);
-  border-bottom: 1px solid var(--border);
+  background: rgba(2,6,23,.85);
+  position: sticky;
+  top: 0;
 }
 
 .navbar {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   padding: 15px;
 }
 
 .navbar a {
   position: relative;
-  color: var(--text);
+  color: #e5e7eb;
   text-decoration: none;
   padding: 5px 0;
-  transition: color .3s ease, transform .3s ease;
+  transition: color .3s, transform .3s;
 }
 
 .navbar a::after {
@@ -49,14 +37,14 @@ header {
   position: absolute;
   left: 0;
   bottom: -6px;
-  width: 0%;
+  width: 0;
   height: 2px;
-  background: var(--primary);
-  transition: width .3s ease;
+  background: #38bdf8;
+  transition: width .3s;
 }
 
 .navbar a:hover {
-  color: var(--primary);
+  color: #38bdf8;
   transform: translateY(-2px);
 }
 
@@ -64,110 +52,86 @@ header {
   width: 100%;
 }
 
-/* ===== SECTIONS ===== */
-section {
-  padding: 120px 10%;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: .8s cubic-bezier(.2,.65,.3,1);
-}
-
+/* ===== HERO ===== */
 .hero {
+  padding: 120px 10%;
   text-align: center;
 }
 
 .hero span {
-  color: var(--primary);
+  color: #38bdf8;
 }
 
-.avatar {
-  width: 140px;
-  border-radius: 50%;
-  margin-bottom: 20px;
-}
-
-/* ===== BUTTON ===== */
 .btn {
-  display: inline-flex;
+  display: inline-block;
   margin-top: 25px;
   padding: 12px 32px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: linear-gradient(135deg,#7dd3fc,#38bdf8);
   color: #020617;
-  font-weight: 600;
   border-radius: 999px;
-  transition: .35s;
+  text-decoration: none;
+  transition: .3s;
 }
 
 .btn:hover {
-  transform: translateY(-3px) scale(1.04);
+  transform: translateY(-3px);
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 100px 10%;
+}
+
+h2 {
+  margin-bottom: 40px;
 }
 
 /* ===== SKILLS ===== */
-.skill { margin-bottom: 20px; }
+.skill {
+  margin-bottom: 25px;
+}
 
 .progress {
-  height: 8px;
   background: #1e293b;
+  height: 8px;
   border-radius: 4px;
   overflow: hidden;
 }
 
-.progress div {
+.bar {
   height: 100%;
-  width: 0;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  transition: width 1.2s ease;
+  background: linear-gradient(90deg,#7dd3fc,#38bdf8);
+  animation: fill 1.5s ease forwards;
+}
+
+.python { width: 33%; }
+.java   { width: 33%; }
+.cpp    { width: 10%; }
+.js     { width: 33%; }
+
+@keyframes fill {
+  from { width: 0; }
 }
 
 /* ===== CARDS ===== */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
   gap: 30px;
-  margin-top: 40px;
 }
 
-.card,
-.project-card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 18px;
+.card {
+  background: rgba(15,23,42,.6);
+  padding: 30px;
+  border-radius: 16px;
+  transition: transform .3s;
 }
 
-.card-inner {
-  padding: 25px;
-  transition: transform .35s cubic-bezier(.2,.65,.3,1);
-}
-
-.card:hover .card-inner,
-.project-card:hover .card-inner {
+.card:hover {
   transform: translateY(-6px);
 }
 
-/* ===== CONTACT ===== */
-.contact-box {
-  max-width: 500px;
-  margin: auto;
-  background: var(--card);
-  padding: 30px;
-  border-radius: 15px;
-}
-
-.input-group {
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.input-group input,
-.input-group textarea {
-  width: 100%;
-  padding: 10px;
-  background: transparent;
-  border: 1px solid #334155;
-  color: var(--text);
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
+.card a {
+  color: #38bdf8;
+  text-decoration: none;
 }
