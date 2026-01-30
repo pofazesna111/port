@@ -175,6 +175,14 @@ section h2 {
 
 
 /* ================= CARDS ================= */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+
+  margin-top: 30px;
+  position: relative;
+}
 
 .card,
 .project-card {
@@ -195,6 +203,8 @@ section h2 {
   );
   opacity: 0;
   transition: opacity 0.4s;
+
+  pointer-events: none;
 }
 
 .card:hover::before,
@@ -204,7 +214,7 @@ section h2 {
 
 .card:hover,
 .project-card:hover {
-  transform: translateY(-6px) scale(1.02);
+  transform: translateY(-6px) scale(1.01);
 }
 
 
