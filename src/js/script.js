@@ -1,4 +1,4 @@
-// typing effect
+// typing
 const roles = ["Frontend разработчик", "UI дизайнер", "Студент"];
 let i = 0, j = 0;
 const typing = document.querySelector(".typing");
@@ -21,10 +21,9 @@ function erase() {
     setTimeout(type, 300);
   }
 }
-
 type();
 
-// reveal on scroll
+// reveal + skills
 const reveals = document.querySelectorAll(".reveal");
 
 const observer = new IntersectionObserver(entries => {
@@ -34,16 +33,15 @@ const observer = new IntersectionObserver(entries => {
       entry.target.style.transform = "translateY(0)";
 
       entry.target.querySelectorAll(".progress div").forEach(bar => {
-        bar.style.width = bar.getAttribute("style").replace("width:", "");
+        bar.style.width = bar.dataset.progress;
       });
 
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.2 });
 
 reveals.forEach(el => observer.observe(el));
-
 
 // form
 document.getElementById("contactForm").addEventListener("submit", e => {
