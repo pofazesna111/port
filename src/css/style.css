@@ -1,3 +1,5 @@
+html { scroll-behavior: smooth; }
+
 :root {
   --bg: #020617;
   --card: rgba(15,23,42,.6);
@@ -20,8 +22,9 @@ body {
   color: var(--text);
 }
 
+/* ===== NAVBAR ===== */
 header {
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   background: rgba(2,6,23,.75);
   border-bottom: 1px solid var(--border);
 }
@@ -34,38 +37,64 @@ header {
 }
 
 .navbar a {
+  position: relative;
   color: var(--text);
   text-decoration: none;
+  padding: 5px 0;
+  transition: color .3s ease, transform .3s ease;
 }
 
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: var(--primary);
+  transition: width .3s ease;
+}
+
+.navbar a:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* ===== SECTIONS ===== */
 section {
   padding: 120px 10%;
   opacity: 0;
   transform: translateY(40px);
-  transition: .8s;
+  transition: .8s cubic-bezier(.2,.65,.3,1);
 }
 
 .hero {
   text-align: center;
 }
 
-.avatar {
-  width: 140px;
-  border-radius: 50%;
-}
-
 .hero span {
   color: var(--primary);
 }
 
+.avatar {
+  width: 140px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+/* ===== BUTTON ===== */
 .btn {
   display: inline-flex;
   margin-top: 25px;
   padding: 12px 32px;
   background: linear-gradient(135deg, var(--primary), var(--accent));
   color: #020617;
-  border-radius: 999px;
   font-weight: 600;
+  border-radius: 999px;
   transition: .35s;
 }
 
@@ -74,9 +103,7 @@ section {
 }
 
 /* ===== SKILLS ===== */
-.skill {
-  margin-bottom: 20px;
-}
+.skill { margin-bottom: 20px; }
 
 .progress {
   height: 8px;
@@ -105,12 +132,11 @@ section {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 18px;
-  overflow: hidden;
 }
 
 .card-inner {
   padding: 25px;
-  transition: transform .35s;
+  transition: transform .35s cubic-bezier(.2,.65,.3,1);
 }
 
 .card:hover .card-inner,
