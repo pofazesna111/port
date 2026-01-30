@@ -1,4 +1,4 @@
-// typing
+// typing effect
 const roles = ["Frontend разработчик", "UI дизайнер", "Студент"];
 let i = 0, j = 0;
 const typing = document.querySelector(".typing");
@@ -23,25 +23,37 @@ function erase() {
 }
 type();
 
-// reveal + skills
+// reveal animation
 const reveals = document.querySelectorAll(".reveal");
 
-const observer = new IntersectionObserver(entries => {
+const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.style.opacity = 1;
       entry.target.style.transform = "translateY(0)";
-
-      entry.target.querySelectorAll(".progress div").forEach(bar => {
-        bar.style.width = bar.dataset.progress;
-      });
-
-      observer.unobserve(entry.target);
+      revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.2 });
+}, { threshold: 0.15 });
 
-reveals.forEach(el => observer.observe(el));
+reveals.forEach(el => revealObserver.observe(el));
+
+// skills progress animation
+const skillsSection = document.querySelector("#skills");
+const skillBars = document.querySelectorAll(".progress div");
+
+const skillsObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      skillBars.forEach(bar => {
+        bar.style.width = bar.dataset.progress;
+      });
+      skillsObserver.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+
+skillsObserver.observe(skillsSection);
 
 // form
 document.getElementById("contactForm").addEventListener("submit", e => {
