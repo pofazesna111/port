@@ -2,9 +2,14 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Портфолио</title>
+  <title>Портфолио | Студент</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -13,63 +18,131 @@
   <nav class="navbar">
     <a href="#home">Главная</a>
     <a href="#skills">Навыки</a>
+    <a href="#education">Образование</a>
     <a href="#achievements">Достижения</a>
     <a href="#projects">Проекты</a>
     <a href="#contacts">Контакты</a>
   </nav>
 </header>
 
-<section id="home" class="hero">
+<main>
+
+<section id="home" class="hero reveal">
+  <img src="assets/avatar.png" class="avatar" alt="Аватар">
   <h1>Привет, я <span>Жартаев Алихан</span></h1>
-  <p>Начинающий разработчик</p>
+  <h2 class="typing"></h2>
+  <p>
+    Начинающий разработчик, изучающий современные технологии.
+    Интересуюсь веб-разработкой и программированием.
+  </p>
   <a href="#contacts" class="btn">Связаться со мной</a>
 </section>
 
-<section id="skills">
+<section id="skills" class="reveal">
   <h2>Навыки</h2>
+
+  <h3>Hard Skills</h3>
 
   <div class="skill">
     <span>Python</span>
-    <div class="progress"><div class="bar python"></div></div>
+    <div class="progress"><div data-progress="33%"></div></div>
   </div>
 
   <div class="skill">
     <span>Java</span>
-    <div class="progress"><div class="bar java"></div></div>
+    <div class="progress"><div data-progress="33%"></div></div>
   </div>
 
   <div class="skill">
     <span>C++</span>
-    <div class="progress"><div class="bar cpp"></div></div>
+    <div class="progress"><div data-progress="10%"></div></div>
   </div>
 
   <div class="skill">
     <span>JavaScript</span>
-    <div class="progress"><div class="bar js"></div></div>
+    <div class="progress"><div data-progress="33%"></div></div>
   </div>
 </section>
 
-<section id="achievements">
+<section id="achievements" class="reveal">
   <h2>Достижения</h2>
+
   <div class="cards">
-    <div class="card">3 место LAN</div>
-    <div class="card">Сертификат Coursera</div>
-    <div class="card">Гран-при</div>
+    <div class="card">
+      <div class="card-inner">
+        <h3>3 место на LAN</h3>
+        <p>Местный LAN-турнир по CS2</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <h3>Сертификат</h3>
+        <p>Coursera / Huawei</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <h3>Гран-при</h3>
+        <p>Осенний бал</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="projects">
+<section id="projects" class="reveal">
   <h2>Проекты</h2>
+
   <div class="cards">
-    <div class="card"><a href="https://youtube.com" target="_blank">YouTube</a></div>
-    <div class="card"><a href="https://faceittracker.net" target="_blank">FACEIT</a></div>
+    <div class="project-card">
+      <div class="card-inner">
+        <h3>Советую послушать</h3>
+        <p>SoundCloud 17–18</p>
+        <a href="https://www.youtube.com/watch?v=mji65-HiaUg" target="_blank">YouTube</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="card-inner">
+        <h3>FACEIT</h3>
+        <p>Highest ELO: 2495</p>
+        <a href="https://faceittracker.net/players/donk666" target="_blank">Faceit Tracker</a>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="contacts">
+<section id="contacts" class="reveal">
   <h2>Контакты</h2>
-  <p>Email: percgod@gmail.com</p>
+
+  <div class="contact-box">
+    <form id="contactForm">
+      <div class="input-group">
+        <input type="text" required>
+        <label>Имя</label>
+      </div>
+
+      <div class="input-group">
+        <input type="email" required>
+        <label>Email</label>
+      </div>
+
+      <div class="input-group">
+        <textarea rows="4" required></textarea>
+        <label>Сообщение</label>
+      </div>
+
+      <button class="btn">Отправить</button>
+      <p id="formMessage"></p>
+    </form>
+  </div>
 </section>
 
+</main>
+
+<footer>© 2025 Крутой пацан-студент</footer>
+
+<script src="js/script.js"></script>
 </body>
 </html>
