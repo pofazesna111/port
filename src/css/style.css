@@ -171,3 +171,35 @@ footer {
   text-align: center;
   padding: 20px;
 }
+/* ===== EDUCATION ===== */
+#education {
+  padding-top: 120px;
+}
+
+.education-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 25px 30px;
+  margin-top: 30px;
+  transition: transform .35s cubic-bezier(.2,.65,.3,1),
+              box-shadow .35s ease;
+}
+
+.education-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 40px rgba(0,0,0,.35);
+}
+
+.education-item h3 {
+  color: var(--primary);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.education-item p {
+  color: var(--muted);
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
