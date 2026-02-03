@@ -14,6 +14,8 @@
 </head>
 <body>
 
+<canvas id="stars"></canvas>
+
 <header>
   <nav class="navbar">
     <a href="#home">Главная</a>
@@ -21,9 +23,58 @@
     <a href="#education">Образование</a>
     <a href="#achievements">Достижения</a>
     <a href="#projects">Проекты</a>
+    <a href="#games">Мини-игры</a>
     <a href="#contacts">Контакты</a>
   </nav>
 </header>
+
+<main>
+
+<section id="home" class="hero reveal">
+  <img src="assets/avatar.png" class="avatar" alt="Аватар">
+  <h1>Привет, я <span>Жартаев Алихан</span></h1>
+  <h2 class="typing"></h2>
+  <p>
+    Начинающий разработчик, изучающий современные технологии.
+    Интересуюсь веб-разработкой и программированием.
+  </p>
+  <a href="#contacts" class="btn">Связаться со мной</a>
+</section>
+
+<section id="skills" class="reveal">
+  <h2>Навыки</h2>
+  <h3>Hard Skills</h3>
+  <div class="skill"><span>Python</span><div class="progress"><div data-progress="52%"></div></div></div>
+  <div class="skill"><span>Java</span><div class="progress"><div data-progress="52%"></div></div></div>
+  <div class="skill"><span>C++</span><div class="progress"><div data-progress="52%"></div></div></div>
+  <div class="skill"><span>JavaScript</span><div class="progress"><div data-progress="52%"></div></div></div>
+</section>
+
+<section id="education" class="reveal">
+  <h2>Образование</h2>
+  <div class="cards">
+    <div class="card"><div class="card-inner"><h3>Университет TOU</h3><p><strong>Степень:</strong> Бакалавр</p><p><strong>Направление:</strong> Computer Science</p><p><strong>Период:</strong> 2023 — настоящее время</p></div></div>
+    <div class="card"><div class="card-inner"><h3>Школа</h3><p>Среднее образование</p><p><strong>Период:</strong> 2012 — 2023</p></div></div>
+  </div>
+</section>
+
+<section id="achievements" class="reveal">
+  <h2>Достижения</h2>
+  <div class="cards">
+    <div class="card"><div class="card-inner"><h3>3 место на LAN</h3><p>Местный LAN-турнир по CS2</p></div></div>
+    <div class="card"><div class="card-inner"><h3>Сертификат</h3><p>Coursera / Huawei</p></div></div>
+    <div class="card"><div class="card-inner"><h3>Гран-при</h3><p>Осенний бал</p></div></div>
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <h2>Проекты</h2>
+  <div class="cards">
+    <div class="project-card"><div class="card-inner"><h3>Советую послушать</h3><p>SoundCloudKazakhstanBeMad</p><a href="https://www.youtube.com/watch?v=mji65-HiaUg" target="_blank">YouTube</a></div></div>
+    <div class="project-card"><div class="card-inner"><h3>Мой трекер на фейсите</h3><p>Highest ELO: 2495</p><a href="https://faceittracker.net/players/donk666" target="_blank">Faceit Tracker</a></div></div>
+  </div>
+</section>
+
 <section id="games" class="reveal">
   <h2>Мини-игры</h2>
   <div class="games-menu">
@@ -36,10 +87,7 @@
 
     <div id="clicker" class="game-card hidden">
       <h3>Кликер</h3>
-      <div class="stats">
-        <span>Очки: <b id="score">0</b></span>
-        <span>Время: <b id="time">30</b> сек</span>
-      </div>
+      <div class="stats"><span>Очки: <b id="score">0</b></span> <span>Время: <b id="time">30</b> сек</span></div>
       <button id="clickBtn" class="primary">КЛИК</button>
       <button id="resetBtn" class="secondary">Сброс</button>
       <p id="clickerResult" class="result"></p>
@@ -62,139 +110,23 @@
 
   </div>
 </section>
-  
-<main>
-
-<section id="home" class="hero reveal">
-  <img src="assets/avatar.png" class="avatar" alt="Аватар">
-  <h1>Привет, я <span>Жартаев Алихан</span></h1>
-  <h2 class="typing"></h2>
-  <p>
-    Начинающий разработчик, изучающий современные технологии.
-    Интересуюсь веб-разработкой и программированием.
-  </p>
-  <a href="#contacts" class="btn">Связаться со мной</a>
-</section>
-
-<section id="skills" class="reveal">
-  <h2>Навыки</h2>
-
-  <h3>Hard Skills</h3>
-
-  <div class="skill">
-    <span>Python</span>
-    <div class="progress"><div data-progress="52%"></div></div>
-  </div>
-
-  <div class="skill">
-    <span>Java</span>
-    <div class="progress"><div data-progress="52%"></div></div>
-  </div>
-
-  <div class="skill">
-    <span>C++</span>
-    <div class="progress"><div data-progress="52%"></div></div>
-  </div>
-
-  <div class="skill">
-    <span>JavaScript</span>
-    <div class="progress"><div data-progress="52%"></div></div>
-  </div>
-</section>
-
-<!-- ОБРАЗОВАНИЕ -->
-<section id="education" class="reveal">
-  <h2>Образование</h2>
-
-  <div class="cards">
-    <div class="card">
-      <div class="card-inner">
-        <h3>Университет TOU</h3>
-        <p><strong>Степень:</strong> Бакалавр</p>
-        <p><strong>Направление:</strong> Computer Science</p>
-        <p><strong>Период:</strong> 2023 — настоящее время</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-inner">
-        <h3>Школа</h3>
-        <p>Среднее образование</p>
-        <p><strong>Период:</strong> 2012 — 2023</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="achievements" class="reveal">
-  <h2>Достижения</h2>
-
-  <div class="cards">
-    <div class="card">
-      <div class="card-inner">
-        <h3>3 место на LAN</h3>
-        <p>Местный LAN-турнир по CS2</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-inner">
-        <h3>Сертификат</h3>
-        <p>Coursera / Huawei</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-inner">
-        <h3>Гран-при</h3>
-        <p>Осенний бал</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="projects" class="reveal">
-  <h2>Проекты</h2>
-
-  <div class="cards">
-    <div class="project-card">
-      <div class="card-inner">
-        <h3>Советую послушать</h3>
-        <p>SoundCloudKazakhstanBeMad</p>
-        <a href="https://www.youtube.com/watch?v=mji65-HiaUg" target="_blank">YouTube</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="card-inner">
-        <h3>Мой трекер на фейсите</h3>
-        <p>Highest ELO: 2495</p>
-        <a href="https://faceittracker.net/players/donk666" target="_blank">Faceit Tracker</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section id="contacts" class="reveal">
   <h2>Контакты</h2>
-
   <div class="contact-box">
     <form id="contactForm">
       <div class="input-group">
         <input type="text" required>
         <label>Имя</label>
       </div>
-
       <div class="input-group">
         <input type="email" required>
         <label>Email</label>
       </div>
-
       <div class="input-group">
         <textarea rows="4" required></textarea>
         <label>Сообщение</label>
       </div>
-
       <button class="btn">Отправить</button>
       <p id="formMessage"></p>
     </form>
@@ -202,9 +134,13 @@
 </section>
 
 </main>
-
 <footer>© 2025 Крутой пацан-студент</footer>
 
 <script src="js/script.js"></script>
+<script src="js/clicker.js"></script>
+<script src="js/adventure.js"></script>
+<script src="js/guess.js"></script>
+<script src="js/stars.js"></script>
+<script src="js/games.js"></script>
 </body>
 </html>
