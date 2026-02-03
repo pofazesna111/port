@@ -24,7 +24,45 @@
     <a href="#contacts">Контакты</a>
   </nav>
 </header>
+<section id="games" class="reveal">
+  <h2>Мини-игры</h2>
+  <div class="games-menu">
+    <button onclick="showGame('clicker')" class="btn">Кликер</button>
+    <button onclick="showGame('adventure')" class="btn">Приключения</button>
+    <button onclick="showGame('guess')" class="btn">Угадай число</button>
+  </div>
 
+  <div class="games-container">
+
+    <div id="clicker" class="game-card hidden">
+      <h3>Кликер</h3>
+      <div class="stats">
+        <span>Очки: <b id="score">0</b></span>
+        <span>Время: <b id="time">30</b> сек</span>
+      </div>
+      <button id="clickBtn" class="primary">КЛИК</button>
+      <button id="resetBtn" class="secondary">Сброс</button>
+      <p id="clickerResult" class="result"></p>
+    </div>
+
+    <div id="adventure" class="game-card hidden">
+      <h3>Генератор приключений</h3>
+      <button id="generateAdventure" class="primary">Создать приключение</button>
+      <p id="adventureText" class="result"></p>
+    </div>
+
+    <div id="guess" class="game-card hidden">
+      <h3>Угадай число</h3>
+      <input type="number" id="guessInput" min="1" max="100" placeholder="Введите число">
+      <button id="guessBtn" class="primary">Проверить</button>
+      <p id="guessMessage" class="result"></p>
+      <p class="attempts">Попытки: <b id="attempts">10</b></p>
+      <button id="restartBtn" class="secondary hidden">Заново</button>
+    </div>
+
+  </div>
+</section>
+  
 <main>
 
 <section id="home" class="hero reveal">
