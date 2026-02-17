@@ -1,24 +1,27 @@
-// tictactoe.js - Крестики-нолики (ПОЛНАЯ ВЕРСИЯ)
+// tictactoe.js - Крестики-нолики
 class TicTacToe {
     constructor() {
+        console.log('Создание TicTacToe');
         this.board = Array(9).fill('');
         this.currentPlayer = 'X';
         this.gameActive = true;
-        this.mode = '2p'; // '2p' или 'ai'
+        this.mode = '2p';
         this.scores = { X: 0, O: 0 };
         this.winCombos = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8], // горизонтали
-            [0, 3, 6], [1, 4, 7], [2, 5, 8], // вертикали
-            [0, 4, 8], [2, 4, 6]             // диагонали
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
         ];
         
-        this.initElements();
-        this.initEventListeners();
-        this.renderBoard();
-        this.updateStatus();
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.initElements());
+        } else {
+            this.initElements();
+        }
     }
     
     initElements() {
+        console.log('Инициализация элементов TicTacToe');
         this.boardEl = document.getElementById('tttBoard');
         this.statusEl = document.getElementById('tttStatus');
         this.scoreXEl = document.getElementById('scoreX');
@@ -27,22 +30,36 @@ class TicTacToe {
         this.modeAIBtn = document.getElementById('modeAI');
         this.restartBtn = document.getElementById('tttRestart');
         this.resultEl = document.getElementById('tttResult');
-    }
-    
-    initEventListeners() {
-        this.mode2pBtn.addEventListener('click', () => this.setMode('2p'));
-        this.modeAIBtn.addEventListener('click', () => this.setMode('ai'));
-        this.restartBtn.addEventListener('click', () => this.resetGame());
+        
+        console.log('Элементы TicTacToe:', this.boardEl);
+        
+        if (this.mode2pBtn) {
+            this.mode2pBtn.addEventListener('click', () => this.setMode('2p'));
+        }
+        if (this.modeAIBtn) {
+            this.modeAIBtn.addEventListener('click', () => this.setMode('ai'));
+        }
+        if (this.restartBtn) {
+            this.restartBtn.addEventListener('click', () => this.resetGame());
+        }
+        
+        this.loadScores();
+        this.renderBoard();
+        this.updateStatus();
     }
     
     setMode(mode) {
         this.mode = mode;
-        this.mode2pBtn.classList.toggle('active', mode === '2p');
-        this.modeAIBtn.classList.toggle('active', mode === 'ai');
+        if (this.mode2pBtn && this.modeAIBtn) {
+            this.mode2pBtn.classList.toggle('active', mode === '2p');
+            this.modeAIBtn.classList.toggle('active', mode === 'ai');
+        }
         this.resetGame();
     }
     
     renderBoard() {
+        if (!this.boardEl) return;
+        
         this.boardEl.innerHTML = '';
         
         for (let i = 0; i < 9; i++) {
@@ -55,74 +72,64 @@ class TicTacToe {
             cell.textContent = this.board[i];
             cell.dataset.index = i;
             
-            cell.addEventListener('click', () => this.handleCellClick(i));
+            cell.addEventListener('click', (e) => this.handleCellClick(parseInt(e.target.dataset.index)));
             
             this.boardEl.appendChild(cell);
         }
     }
     
     handleCellClick(index) {
-        // Проверяем можно ли сделать ход
         if (!this.gameActive || this.board[index]) return;
         if (this.mode === 'ai' && this.currentPlayer === 'O') return;
         
-        // Делаем ход
         this.makeMove(index);
         
-        // Если режим AI и игра продолжается, ход компьютера
         if (this.mode === 'ai' && this.gameActive && this.currentPlayer === 'O') {
             setTimeout(() => this.makeAIMove(), 500);
         }
     }
     
     makeMove(index) {
-        // Ставим знак
         this.board[index] = this.currentPlayer;
         
-        // Проверяем победу
         const winInfo = this.checkWin();
         
         if (winInfo.win) {
-            // Подсвечиваем выигрышную комбинацию
             this.highlightWinningCombo(winInfo.combo);
-            
-            // Обновляем счет
             this.scores[this.currentPlayer]++;
             this.updateScores();
             
-            // Сообщение о победе
-            this.statusEl.textContent = `🏆 Игрок ${this.currentPlayer} победил!`;
-            this.resultEl.textContent = `Победитель: ${this.currentPlayer}`;
+            if (this.statusEl) {
+                this.statusEl.textContent = `🏆 Игрок ${this.currentPlayer} победил!`;
+            }
+            if (this.resultEl) {
+                this.resultEl.textContent = `Победитель: ${this.currentPlayer}`;
+            }
             
             this.gameActive = false;
         } 
         else if (!this.board.includes('')) {
-            // Ничья
-            this.statusEl.textContent = '🤝 Ничья!';
-            this.resultEl.textContent = 'Ничья!';
+            if (this.statusEl) this.statusEl.textContent = '🤝 Ничья!';
+            if (this.resultEl) this.resultEl.textContent = 'Ничья!';
             this.gameActive = false;
         } 
         else {
-            // Меняем игрока
             this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
             this.updateStatus();
         }
         
-        // Обновляем доску
         this.renderBoard();
     }
     
     makeAIMove() {
         if (!this.gameActive || this.currentPlayer !== 'O') return;
         
-        // Поиск пустых клеток
         const emptyCells = this.board.reduce((acc, cell, index) => {
             if (cell === '') acc.push(index);
             return acc;
         }, []);
         
         if (emptyCells.length > 0) {
-            // Случайный ход
             const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
             this.makeMove(randomIndex);
         }
@@ -141,44 +148,46 @@ class TicTacToe {
     }
     
     highlightWinningCombo(combo) {
+        if (!this.boardEl) return;
         combo.forEach(index => {
             const cell = this.boardEl.children[index];
-            cell.classList.add('win');
+            if (cell) cell.classList.add('win');
         });
     }
     
     updateStatus() {
-        this.statusEl.textContent = `Ход игрока ${this.currentPlayer === 'X' ? '❌' : '⭕'}`;
+        if (this.statusEl) {
+            this.statusEl.textContent = `Ход игрока ${this.currentPlayer === 'X' ? '❌' : '⭕'}`;
+        }
     }
     
     updateScores() {
-        this.scoreXEl.textContent = this.scores.X;
-        this.scoreOEl.textContent = this.scores.O;
-        
-        // Сохраняем в localStorage
+        if (this.scoreXEl) this.scoreXEl.textContent = this.scores.X;
+        if (this.scoreOEl) this.scoreOEl.textContent = this.scores.O;
         localStorage.setItem('tttScores', JSON.stringify(this.scores));
+    }
+    
+    loadScores() {
+        const savedScores = localStorage.getItem('tttScores');
+        if (savedScores) {
+            this.scores = JSON.parse(savedScores);
+            this.updateScores();
+        }
     }
     
     resetGame() {
         this.board = Array(9).fill('');
         this.currentPlayer = 'X';
         this.gameActive = true;
-        this.resultEl.textContent = '';
-        
-        // Загружаем счета из localStorage
-        const savedScores = localStorage.getItem('tttScores');
-        if (savedScores) {
-            this.scores = JSON.parse(savedScores);
-            this.updateScores();
-        }
-        
+        if (this.resultEl) this.resultEl.textContent = '';
+        this.loadScores();
         this.renderBoard();
         this.updateStatus();
     }
 }
 
-// Инициализация
-let tictactoe;
-window.addEventListener('load', () => {
-    tictactoe = new TicTacToe();
-});
+// Создаем глобальный экземпляр
+if (document.getElementById('tictactoe')) {
+    window.tictactoe = new TicTacToe();
+    console.log('TicTacToe создан');
+}
