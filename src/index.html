@@ -88,7 +88,7 @@
 
   <div class="games-container">
 
-    <!-- Существующая игра: Кликер -->
+    <!-- Кликер (существующий) -->
     <div id="clicker" class="game-card hidden">
       <h3>🖱️ Кликер</h3>
       <div class="stats">
@@ -100,14 +100,14 @@
       <p id="clickerResult" class="result"></p>
     </div>
 
-    <!-- Существующая игра: Приключения -->
+    <!-- Приключения (существующий) -->
     <div id="adventure" class="game-card hidden">
       <h3>📖 Генератор приключений</h3>
       <button id="generateAdventure" class="primary">✨ Создать приключение</button>
       <p id="adventureText" class="result"></p>
     </div>
 
-    <!-- Существующая игра: Угадай число -->
+    <!-- Угадай число (существующий) -->
     <div id="guess" class="game-card hidden">
       <h3>🔢 Угадай число</h3>
       <input type="number" id="guessInput" min="1" max="100" placeholder="Введите число (1-100)">
@@ -117,7 +117,7 @@
       <button id="restartBtn" class="secondary hidden">🔄 Заново</button>
     </div>
 
-    <!-- Новая игра: Реакция -->
+    <!-- Реакция (НОВАЯ) -->
     <div id="reaction" class="game-card hidden">
       <h3>⚡ Реакция</h3>
       <div class="stats">
@@ -135,7 +135,7 @@
       <p id="reactionResult" class="result"></p>
     </div>
 
-    <!-- Новая игра: Крестики-нолики -->
+    <!-- Крестики-нолики (НОВАЯ) -->
     <div id="tictactoe" class="game-card hidden">
       <h3>⭕❌ Крестики-нолики</h3>
       
@@ -155,9 +155,7 @@
         <button id="modeAI" class="mode-btn">🤖 Против компа</button>
       </div>
       
-      <div class="ttt-board" id="tttBoard">
-        <!-- Ячейки будут созданы через JS -->
-      </div>
+      <div class="ttt-board" id="tttBoard"></div>
       
       <div class="ttt-status" id="tttStatus">
         Ход игрока ❌
@@ -167,34 +165,28 @@
       <p id="tttResult" class="result"></p>
     </div>
 
-    <!-- Новая игра: Лабиринт -->
+    <!-- Лабиринт (НОВАЯ) -->
     <div id="maze" class="game-card hidden">
       <h3>🏃 Лабиринт</h3>
       
       <div class="maze-stats">
-        <div class="maze-timer">
-          ⏱️ Время: <span id="mazeTime">0</span>с
-        </div>
-        <div class="maze-moves">
-          👣 Ходов: <span id="mazeMoves">0</span>
-        </div>
+        <div class="maze-timer">⏱️ Время: <span id="mazeTime">0</span>с</div>
+        <div class="maze-moves">👣 Ходов: <span id="mazeMoves">0</span></div>
       </div>
       
       <div class="maze-container">
-        <div class="maze-grid" id="mazeGrid">
-          <!-- Генерируется через JS -->
-        </div>
+        <div class="maze-grid" id="mazeGrid"></div>
       </div>
       
       <div class="maze-controls">
         <button id="mazeNew" class="primary">🔄 Новый лабиринт</button>
-        <button id="mazeReset" class="secondary">↩️ Сбросить позицию</button>
+        <button id="mazeReset" class="secondary">↩️ Сбросить</button>
       </div>
       
       <p id="mazeMessage" class="result"></p>
     </div>
 
-  </div> <!-- Закрытие games-container -->
+  </div>
 </section>
 
 <section id="contacts" class="reveal">
@@ -222,11 +214,20 @@
 </main>
 <footer>© 2025 Крутой пацан-студент</footer>
 
+<!-- СКРИПТЫ: СНАЧАЛА ОСНОВНЫЕ, ПОТОМ ИГРЫ -->
 <script src="js/script.js"></script>
+<script src="js/stars.js"></script>
+<script src="js/games.js"></script>
+
+<!-- Существующие игры -->
 <script src="js/clicker.js"></script>
 <script src="js/adventure.js"></script>
 <script src="js/guess.js"></script>
-<script src="js/stars.js"></script>
-<script src="js/games.js"></script>
+
+<!-- НОВЫЕ игры -->
+<script src="js/reaction.js"></script>
+<script src="js/tictactoe.js"></script>
+<script src="js/maze.js"></script>
+
 </body>
 </html>
