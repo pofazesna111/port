@@ -1,28 +1,68 @@
 // games.js - Управление всеми играми
 function showGame(id) {
+    console.log('Показываем игру:', id); // Для отладки
+    
     // Скрываем все игры
-    document.querySelectorAll(".game-card").forEach(g => g.classList.add("hidden"));
+    document.querySelectorAll(".game-card").forEach(g => {
+        g.classList.add("hidden");
+    });
     
     // Показываем выбранную игру
-    document.getElementById(id).classList.remove("hidden");
+    const selectedGame = document.getElementById(id);
+    if (selectedGame) {
+        selectedGame.classList.remove("hidden");
+    }
     
     // Специфичные действия для каждой игры
     switch(id) {
         case 'reaction':
-            if (window.reactionGame) reactionGame.resetGame();
+            if (window.reactionGame) {
+                console.log('Запускаем реакцию');
+                setTimeout(() => {
+                    window.reactionGame.resetGame();
+                    window.reactionGame.startGame();
+                }, 100);
+            } else {
+                console.error('reactionGame не найден');
+            }
             break;
+            
         case 'tictactoe':
-            // Ничего не делаем, игра уже инициализирована
+            if (window.tictactoe) {
+                console.log('Показываем крестики-нолики');
+                window.tictactoe.resetGame();
+            }
             break;
+            
         case 'maze':
-            if (window.mazeGame) mazeGame.newMaze();
+            if (window.mazeGame) {
+                console.log('Запускаем лабиринт');
+                window.mazeGame.newMaze();
+            }
+            break;
+            
+        case 'clicker':
+            if (window.clickerGame) {
+                console.log('Показываем кликер');
+                window.clickerGame.resetGame();
+            }
+            break;
+            
+        case 'adventure':
+            console.log('Показываем приключения');
+            break;
+            
+        case 'guess':
+            if (window.guessGame) {
+                console.log('Показываем угадай число');
+                window.guessGame.resetGame();
+            }
             break;
     }
 }
 
-// 3D Tilt для карточек (оптимизированная версия)
+// 3D Tilt для карточек
 let ticking = false;
-
 document.querySelectorAll(".game-card").forEach(card => {
     card.addEventListener("mousemove", e => {
         if (!ticking) {
@@ -46,24 +86,23 @@ document.querySelectorAll(".game-card").forEach(card => {
 
 // Ripple effect для всех кнопок
 document.querySelectorAll(".game-card button").forEach(btn => {
-    btn.addEventListener("click", e => {
-        const r = btn.getBoundingClientRect();
-        const size = Math.max(r.width, r.height);
+    btn.addEventListener("click", function(e) {
         const ripple = document.createElement("span");
         ripple.className = "ripple";
-        ripple.style.width = ripple.style.height = size + "px";
-        ripple.style.left = e.clientX - r.left - size/2 + "px";
-        ripple.style.top = e.clientY - r.top - size/2 + "px";
-        btn.appendChild(ripple);
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+        this.appendChild(ripple);
         setTimeout(() => ripple.remove(), 600);
     });
 });
 
-// Глобальные переменные для игр
-let reactionGame, tictactoe, mazeGame;
-
-// Инициализация при загрузке
+// Проверка загрузки
 window.addEventListener('load', () => {
-    // Игры инициализируются в своих файлах
-    console.log('🎮 Все игры загружены!');
+    console.log('Страница загружена');
+    console.log('ReactionGame:', window.reactionGame);
+    console.log('TicTacToe:', window.tictactoe);
+    console.log('MazeGame:', window.mazeGame);
 });
