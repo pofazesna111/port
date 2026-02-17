@@ -268,3 +268,118 @@ button {
   transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.02);
 }
 .hidden { display: none; }
+/* Дополнительные стили для улучшенного UI */
+
+/* Анимация для звезд */
+#stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Улучшенные кнопки */
+.primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Анимация для сообщений */
+.result {
+    min-height: 60px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Стили для поля ввода в guess */
+#guessInput {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid rgba(125, 211, 252, 0.3);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 16px;
+    text-align: center;
+}
+
+#guessInput:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 15px rgba(125, 211, 252, 0.5);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    section {
+        padding: 80px 5%;
+    }
+    
+    .navbar {
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+    
+    .navbar a {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
+    
+    .games-menu {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .games-menu .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .game-card {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+}
+
+/* Анимация для рекордов */
+@keyframes recordPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.new-record {
+    animation: recordPulse 0.5s ease 3;
+    color: gold;
+    font-weight: bold;
+}
+
+/* Курсор для печатающего текста */
+.typing::after {
+    content: '|';
+    animation: blink 1s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
