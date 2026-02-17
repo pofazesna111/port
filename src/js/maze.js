@@ -1,7 +1,7 @@
-// maze.js - Игра Лабиринт (ПОЛНАЯ ВЕРСИЯ)
+// maze.js - Игра Лабиринт
 class MazeGame {
     constructor() {
-        // Стандартный лабиринт 10x10 (1 - стена, 0 - проход)
+        console.log('Создание MazeGame');
         this.mazeTemplate = [
             [1,1,1,1,1,1,1,1,1,1],
             [1,0,0,0,1,0,0,0,0,1],
@@ -24,48 +24,52 @@ class MazeGame {
         this.timer = null;
         this.cellSize = 40;
         
-        this.initElements();
-        this.initEventListeners();
-        this.loadMaze();
-        this.renderMaze();
-        this.startTimer();
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.initElements());
+        } else {
+            this.initElements();
+        }
     }
     
     initElements() {
+        console.log('Инициализация элементов Maze');
         this.gridEl = document.getElementById('mazeGrid');
         this.timeEl = document.getElementById('mazeTime');
         this.movesEl = document.getElementById('mazeMoves');
         this.messageEl = document.getElementById('mazeMessage');
         this.newBtn = document.getElementById('mazeNew');
         this.resetBtn = document.getElementById('mazeReset');
-    }
-    
-    initEventListeners() {
-        // Управление с клавиатуры
+        
+        console.log('Элементы Maze:', this.gridEl);
+        
         window.addEventListener('keydown', (e) => this.handleKeyPress(e));
         
-        // Кнопки
-        this.newBtn.addEventListener('click', () => this.newMaze());
-        this.resetBtn.addEventListener('click', () => this.resetPosition());
+        if (this.newBtn) {
+            this.newBtn.addEventListener('click', () => this.newMaze());
+        }
+        if (this.resetBtn) {
+            this.resetBtn.addEventListener('click', () => this.resetPosition());
+        }
         
-        // Блокируем скролл при нажатии стрелок
         window.addEventListener('keydown', (e) => {
             if (e.key.startsWith('Arrow')) {
                 e.preventDefault();
             }
         });
+        
+        this.loadMaze();
+        this.renderMaze();
     }
     
     loadMaze() {
-        // Копируем шаблон
         this.maze = this.mazeTemplate.map(row => [...row]);
-        
-        // Ставим игрока и выход
         this.playerPos = { x: 1, y: 1 };
         this.exitPos = { x: 8, y: 8 };
     }
     
     renderMaze() {
+        if (!this.gridEl) return;
+        
         const size = this.maze.length;
         this.gridEl.style.gridTemplateColumns = `repeat(${size}, ${this.cellSize}px)`;
         
@@ -76,19 +80,16 @@ class MazeGame {
                 const cell = document.createElement('div');
                 cell.className = 'maze-cell';
                 
-                // Определяем тип клетки
                 if (this.maze[y][x] === 1) {
                     cell.classList.add('wall');
                 } else {
                     cell.classList.add('path');
                 }
                 
-                // Игрок
                 if (x === this.playerPos.x && y === this.playerPos.y) {
                     cell.classList.add('player');
                 }
                 
-                // Выход
                 if (x === this.exitPos.x && y === this.exitPos.y) {
                     cell.classList.add('exit');
                 }
@@ -105,56 +106,42 @@ class MazeGame {
         let newX = this.playerPos.x;
         let newY = this.playerPos.y;
         
-        // Определяем новое положение
         switch(key) {
-            case 'ArrowUp':
-                newY--;
-                break;
-            case 'ArrowDown':
-                newY++;
-                break;
-            case 'ArrowLeft':
-                newX--;
-                break;
-            case 'ArrowRight':
-                newX++;
-                break;
-            default:
-                return;
+            case 'ArrowUp': newY--; break;
+            case 'ArrowDown': newY++; break;
+            case 'ArrowLeft': newX--; break;
+            case 'ArrowRight': newX++; break;
+            default: return;
         }
         
-        // Проверяем можно ли туда пойти (не стена и в пределах лабиринта)
         if (this.isValidMove(newX, newY)) {
             this.movePlayer(newX, newY);
         }
     }
     
     isValidMove(x, y) {
-        // Проверка границ
         if (y < 0 || y >= this.maze.length || x < 0 || x >= this.maze[0].length) {
             return false;
         }
-        
-        // Проверка стены
         return this.maze[y][x] !== 1;
     }
     
     movePlayer(newX, newY) {
-        // Обновляем позицию
         this.playerPos.x = newX;
         this.playerPos.y = newY;
         
-        // Увеличиваем счетчик ходов
         this.moves++;
-        this.movesEl.textContent = this.moves;
+        if (this.movesEl) this.movesEl.textContent = this.moves;
         
-        // Проверяем победу
         if (this.playerPos.x === this.exitPos.x && this.playerPos.y === this.exitPos.y) {
             this.win();
         }
         
-        // Обновляем отображение
         this.renderMaze();
+        
+        if (this.moves === 1 && !this.timer) {
+            this.startTimer();
+        }
     }
     
     win() {
@@ -162,20 +149,21 @@ class MazeGame {
         this.stopTimer();
         
         const timeText = this.formatTime(this.time);
-        this.messageEl.innerHTML = `
-            🎉 ПОБЕДА!<br>
-            ⏱️ Время: ${timeText}<br>
-            👣 Ходов: ${this.moves}
-        `;
+        if (this.messageEl) {
+            this.messageEl.innerHTML = `
+                🎉 ПОБЕДА!<br>
+                ⏱️ Время: ${timeText}<br>
+                👣 Ходов: ${this.moves}
+            `;
+        }
         
-        // Сохраняем рекорд
         this.saveRecord();
     }
     
     startTimer() {
         this.timer = setInterval(() => {
             this.time++;
-            this.timeEl.textContent = this.formatTime(this.time);
+            if (this.timeEl) this.timeEl.textContent = this.time;
         }, 1000);
     }
     
@@ -197,28 +185,23 @@ class MazeGame {
         
         this.playerPos = { x: 1, y: 1 };
         this.moves = 0;
-        this.movesEl.textContent = '0';
+        if (this.movesEl) this.movesEl.textContent = '0';
         this.renderMaze();
     }
     
     newMaze() {
-        // Сбрасываем игру
         this.stopTimer();
         this.gameActive = true;
         this.moves = 0;
         this.time = 0;
+        this.timer = null;
         
-        // Загружаем новый лабиринт (можно добавить разные варианты)
         this.loadMaze();
         this.renderMaze();
         
-        // Обновляем UI
-        this.movesEl.textContent = '0';
-        this.timeEl.textContent = '0';
-        this.messageEl.innerHTML = '';
-        
-        // Запускаем таймер
-        this.startTimer();
+        if (this.movesEl) this.movesEl.textContent = '0';
+        if (this.timeEl) this.timeEl.textContent = '0';
+        if (this.messageEl) this.messageEl.innerHTML = '';
     }
     
     saveRecord() {
@@ -229,22 +212,15 @@ class MazeGame {
                 time: this.time,
                 moves: this.moves
             }));
-            this.messageEl.innerHTML += '<br>🏆 Новый рекорд!';
+            if (this.messageEl) {
+                this.messageEl.innerHTML += '<br>🏆 Новый рекорд!';
+            }
         }
     }
 }
 
-// Инициализация
-let mazeGame;
-window.addEventListener('load', () => {
-    mazeGame = new MazeGame();
-});
-
-// Обновляем showGame
-const originalShowGame2 = window.showGame;
-window.showGame = function(id) {
-    originalShowGame2(id);
-    if (id === 'maze' && mazeGame) {
-        mazeGame.newMaze();
-    }
-};
+// Создаем глобальный экземпляр
+if (document.getElementById('maze')) {
+    window.mazeGame = new MazeGame();
+    console.log('MazeGame создан');
+}
