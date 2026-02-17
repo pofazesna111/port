@@ -288,6 +288,94 @@ button {
     transform: none !important;
     box-shadow: none !important;
 }
+/* Стили для лабиринта */
+.maze-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    font-size: 18px;
+}
+
+.maze-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.maze-grid {
+    display: grid;
+    gap: 2px;
+    background: #333;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.maze-cell {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 3px;
+    transition: all 0.2s;
+}
+
+.maze-cell.wall {
+    background: #2d3436;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+}
+
+.maze-cell.player {
+    background: #00b894;
+    position: relative;
+}
+
+.maze-cell.player::after {
+    content: '👤';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+}
+
+.maze-cell.exit {
+    background: #fdcb6e;
+    position: relative;
+}
+
+.maze-cell.exit::after {
+    content: '🚪';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+}
+
+.maze-cell.path {
+    background: #dfe6e9;
+}
+
+.maze-controls {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .maze-cell {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .maze-cell.player::after,
+    .maze-cell.exit::after {
+        font-size: 18px;
+    }
+}
 
 /* Анимация для сообщений */
 .result {
